@@ -105,6 +105,8 @@ img {
   padding-top: 24px;
   padding-bottom: 24px;
   border-bottom: 1px solid var(--accent);
+  box-shadow: 0px 2px 1px rgba(46, 47, 66, 0.08),
+    0px 1px 1px rgba(46, 47, 66, 0.16), 0px 1px 6px rgba(46, 47, 66, 0.08);
 }
 
 .header-container {
@@ -144,6 +146,7 @@ img {
 
 .menu-underline {
   position: relative;
+  color: var(--pressed-state);
 }
 
 .menu-underline::after {
@@ -152,7 +155,7 @@ img {
   width: 100%;
   height: 4px;
   left: 0px;
-  bottom: 0px;
+  bottom: -1px;
   background-color: var(--pressed-state);
   border-radius: 2px;
 }
@@ -185,7 +188,7 @@ img {
   background-position: center;
   background-size: cover;
   padding: 188px 0;
-  width: 1440px;
+  max-width: 1440px;
   margin: 0 auto;
 }
 
@@ -251,6 +254,10 @@ img {
   background-color: var(--light);
   border-radius: 4px;
   margin-bottom: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 112px;
 }
 
 .features-subtitle {
@@ -305,7 +312,7 @@ img {
 }
 
 .team-person {
-  padding: 32px 16px;
+  padding: 32px 0px;
 }
 
 .team-subtitle {
@@ -385,16 +392,18 @@ img {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: border var(--transition);
+  transition: border-color var(--transition), color var(--transition);
+  color: var(--subtle-text);
 }
 
 .customers-link:hover,
 .customers-link:focus {
   border: 1px solid var(--pressed-state);
+  color: var(--pressed-state);
 }
 
 .customers-icon {
-  fill: var(--subtle-text);
+  fill: currentColor;
   transition: fill var(--transition);
 }
 
@@ -412,6 +421,7 @@ img {
 
 .footer-container {
   display: flex;
+  align-items: baseline;
 }
 
 .footer-company-part {
@@ -493,7 +503,7 @@ img {
   transform: translate(-50%, -50%) scale(1);
   transition: transform var(--transition);
   width: 408px;
-  height: 584px;
+  min-height: 584px;
   background-color: var(--modal-background);
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12),
     0px 2px 1px rgba(0, 0, 0, 0.2);
@@ -506,6 +516,7 @@ img {
 
 .modal-btn {
   position: absolute;
+  padding: 0;
   right: 24px;
   top: 24px;
   width: 24px;
@@ -518,10 +529,23 @@ img {
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: background-color var(--transition), border var(--transition);
+}
+
+.modal-btn:hover,
+.modal-btn:focus {
+  background-color: var(--pressed-state);
+  border: none;
 }
 
 .modal-close-icon {
   fill: var(--dark);
+  transition: fill var(--transition);
+}
+
+.modal-btn:hover .modal-close-icon,
+.modal-btn:focus .modal-close-icon {
+  fill: var(--white-background);
 }
 
 .is-hidden {
@@ -561,7 +585,7 @@ img {
   border: 1px solid var(--accent);
   border-radius: 4px;
   transition: background-color var(--transition), color var(--transition),
-    border var(--transition), box-shadow var(--transition);
+    border-color var(--transition), box-shadow var(--transition);
 }
 
 .filter-btn:hover,
@@ -584,6 +608,15 @@ img {
 }
 
 .portfolio-link {
+  display: block;
+  transition: box-shadow var(--transition);
+}
+
+.portfolio-link:hover,
+.portfolio-link:focus {
+  display: block;
+  box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08),
+    0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
 }
 
 .portfolio-subtitle {
@@ -607,7 +640,7 @@ img {
   border-left: 1px solid var(--accent);
   padding: 32px 16px;
   transition: border-right var(--transition), border-bottom var(--transition),
-    border-left var(--transition), box-shadow var(--transition);
+    border-left var(--transition);
 }
 
 .portfolio-link:hover .portfolio-content,
@@ -615,8 +648,6 @@ img {
   border-right: 1px solid var(--light);
   border-bottom: 1px solid var(--light);
   border-left: 1px solid var(--light);
-  box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08),
-    0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
 }
 
 .portfolio-image-container {
@@ -631,18 +662,16 @@ img {
   color: var(--light);
   background-color: var(--primary-brand);
   position: absolute;
-  bottom: 0;
+  top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  padding-top: 40px;
-  padding-left: 32px;
-  padding-right: 32px;
+  padding: 40px 32px;
   transform: translateY(100%);
   transition: transform var(--transition);
 }
 
 .portfolio-link:hover .portfolio-image-overlay,
 .portfolio-link:focus .portfolio-image-overlay {
-  transform: translateY(0);
+  transform: translateY(0%);
 }
